@@ -9,8 +9,8 @@ import javax.transaction.Transactional;
 public class ConferencePanacheRepository {
 
     @Transactional
-    public void create(final Conference person) {
-        person.persist();
+    public void create(final Conference conference) {
+        conference.persist();
     }
 
     public List<Conference> getAll() {

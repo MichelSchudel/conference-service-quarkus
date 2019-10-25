@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import org.eclipse.microprofile.faulttolerance.Fallback;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @Singleton
@@ -44,7 +45,7 @@ public class ConferenceService {
         return extendedConference;
     }
 
-    //@Fallback(fallbackMethod = "fallback")
+    @Fallback(fallbackMethod = "fallback")
     public Country getCountryOfConference(String name) {
         return countryClient.getCountryOfConference(name);
     }

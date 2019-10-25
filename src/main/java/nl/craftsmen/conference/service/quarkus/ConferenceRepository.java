@@ -14,13 +14,14 @@ public class ConferenceRepository {
     @Inject
     EntityManager entityManager;
 
+    public List<Conference> getAll() {
+        TypedQuery<Conference> query = entityManager.createQuery("select c from Conference c", Conference.class);
+        return query.getResultList();
+    }
+
     @Transactional
     public void create(final Conference conference) {
         entityManager.persist(conference);
     }
 
-    public List<Conference> getAll() {
-        TypedQuery<Conference> query = entityManager.createQuery("select c from Conference c", Conference.class);
-        return query.getResultList();
-    }
 }

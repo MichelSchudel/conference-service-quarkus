@@ -20,6 +20,7 @@ public class ConferenceIT {
     public void testPersonInternal() {
         conferenceResource.getAll();
     }
+
     @Test
     public void testHelloEndpoint() {
         given().when()
