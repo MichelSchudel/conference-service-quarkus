@@ -1,4 +1,4 @@
-package org.acme;
+package nl.craftsmen.conference.service.quarkus;
 
 public class Country {
 

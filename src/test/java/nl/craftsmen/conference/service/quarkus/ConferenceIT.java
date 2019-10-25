@@ -1,4 +1,4 @@
-package org.acme;
+package nl.craftsmen.conference.service.quarkus;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class PersonResourceTest {
+public class ConferenceIT {
 
     @Inject
-    PersonResource personResource;
+    ConferenceResource conferenceResource;
 
     @Test
     public void testPersonInternal() {
-        personResource.getAllPersons();
+        conferenceResource.getAll();
     }
     @Test
     public void testHelloEndpoint() {
@@ -32,34 +32,46 @@ public class PersonResourceTest {
     @Test
     @Transactional
     public void testPersons() {
-        Person person = new Person();
-        person.setName("Michel");
+        Conference conference = new Conference();
+        conference.setName("Devoxx");
 
-        given().body(person)
+        given().body(conference)
                 .contentType("application/json")
                 .when()
-                .post("/persons")
+                .post("/conferences")
                 .then()
                 .statusCode(204);
 
         given()
                 .when()
-                .get("/persons")
+                .get("/conferences")
                 .then()
                 .extract()
                 .path("[0].name")
-                .equals("michel");
+                .equals("Devoxx");
 
     }
 
     @Test
-    public void testCountries() {
+    public void testConferencesWithCountry() {
+        Conference conference = new Conference();
+        conference.setName("Devoxx");
+
+        given().body(conference)
+                .contentType("application/json")
+                .when()
+                .post("/conferences")
+                .then()
+                .statusCode(204);
+
         given().when()
-                .get("/countries")
+                .get("/conferenceswithcountry")
                 .then()
                 .statusCode(200)
+                .log()
+                .all()
                 .extract()
-                .path("[0].name")
+                .path("[0].countryName")
                 .equals("Belgium");
     }
 }

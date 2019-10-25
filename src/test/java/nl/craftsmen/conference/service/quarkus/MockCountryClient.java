@@ -1,7 +1,4 @@
-package org.acme;
-
-import java.util.Arrays;
-import java.util.List;
+package nl.craftsmen.conference.service.quarkus;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -15,9 +12,9 @@ import io.quarkus.test.Mock;
 public class MockCountryClient implements CountryClient {
 
     @Override
-    public List<Country> getAllCountries() {
+    public Country getCountryOfConference(String name) {
         Country country = new Country();
         country.setName("Belgium");
-        return Arrays.asList(country);
+        return country;
     }
 }
