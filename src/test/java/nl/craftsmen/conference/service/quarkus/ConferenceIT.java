@@ -17,7 +17,7 @@ public class ConferenceIT {
     ConferenceResource conferenceResource;
 
     @Test
-    public void testPersonInternal() {
+    public void testConferenceInternal() {
         conferenceResource.getAll();
     }
 
@@ -32,7 +32,7 @@ public class ConferenceIT {
 
     @Test
     @Transactional
-    public void testPersons() {
+    public void testGetConferences() {
         Conference conference = new Conference();
         conference.setName("Devoxx");
 

@@ -38,8 +38,8 @@ public class ConferenceResource {
     @POST
     @Path("/conferences")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createPerson(Conference person) {
-        conferenceService.create(person);
+    public void create(Conference conference) {
+        conferenceService.create(conference);
 
     }
 

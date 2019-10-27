@@ -9,11 +9,11 @@ import javax.transaction.Transactional;
 public class ConferencePanacheRepository {
 
     @Transactional
-    public void create(final Conference conference) {
+    public void save(final Conference conference) {
         conference.persist();
     }
 
-    public List<Conference> getAll() {
+    public List<Conference> findAll() {
         return Conference.listAll();
     }
 }
