@@ -21,11 +21,14 @@ public class ConferenceResource {
     @ConfigProperty(name = "app.hellomessage",  defaultValue="hello default!")
     String helloMessage;
 
+    @Inject
+    ConferenceConfiguration conferenceConfiguration;
+
     @GET
     @Path("/hello")
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
-        return helloMessage;
+        return helloMessage + conferenceConfiguration.hellomessage;
     }
 
     @GET
