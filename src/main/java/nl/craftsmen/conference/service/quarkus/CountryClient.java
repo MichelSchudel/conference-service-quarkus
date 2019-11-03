@@ -9,7 +9,7 @@ import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
 import org.eclipse.microprofile.faulttolerance.Retry;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@Path("/")
+
 @RegisterRestClient
 public interface CountryClient {
 
