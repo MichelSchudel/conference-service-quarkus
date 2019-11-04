@@ -1,7 +1,9 @@
 package nl.craftsmen.conference.service.quarkus;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -14,11 +16,11 @@ import io.quarkus.test.junit.QuarkusTest;
 public class ConferenceIT {
 
     @Inject
-    ConferenceResource conferenceResource;
+    HelloResource helloResource;
 
     @Test
     public void testConferenceInternal() {
-        conferenceResource.getAll();
+        assertThat(helloResource.hello(), equalTo("Hi from test profile!"));
     }
 
     @Test
