@@ -30,6 +30,17 @@ public class ConferenceService {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
     public List<ExtendedConference> getAllWithCountry() {
         List<Conference> conferences = this.getAll();
         return conferences.stream()

@@ -10,26 +10,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import org.eclipse.microprofile.config.inject.ConfigProperty;
-
 @Path("/")
 public class ConferenceResource {
 
     @Inject
     ConferenceService conferenceService;
-
-    @ConfigProperty(name = "app.hellomessage",  defaultValue="hello default!")
-    String helloMessage;
-
-    @Inject
-    ConferenceConfiguration conferenceConfiguration;
-
-    @GET
-    @Path("/hello")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return helloMessage + conferenceConfiguration.hellomessage;
-    }
 
     @GET
     @Path("/conferences")
